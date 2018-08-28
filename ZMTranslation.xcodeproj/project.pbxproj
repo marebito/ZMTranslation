@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0759960D264D786217E941C0 /* libPods-ZMTranslation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5964E161DE3E8F5C1A292BB8 /* libPods-ZMTranslation.a */; };
+		54242A212133C7D300457D7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A202133C7D300457D7E /* AppDelegate.m */; };
+		54242A242133C7D300457D7E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A232133C7D300457D7E /* ViewController.m */; };
+		54242A262133C7D300457D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54242A252133C7D300457D7E /* Assets.xcassets */; };
+		54242A292133C7D300457D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54242A272133C7D300457D7E /* Main.storyboard */; };
+		54242A2C2133C7D300457D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A2B2133C7D300457D7E /* main.m */; };
+		54242A352133C7E800457D7E /* WordTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A342133C7E800457D7E /* WordTranslator.m */; };
+		54242A3C2133D64100457D7E /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3B2133D64100457D7E /* HttpUtil.m */; };
+		54242A3F2133D6EB00457D7E /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3E2133D6EA00457D7E /* StringUtil.m */; };
+		543F78472134F5E30028EFC6 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F78462134F5E30028EFC6 /* Alert.m */; };
+		543F784C213517540028EFC6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 543F784B213517540028EFC6 /* icon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		54242A1C2133C7D200457D7E /* ZMTranslation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMTranslation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54242A1F2133C7D300457D7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		54242A202133C7D300457D7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		54242A222133C7D300457D7E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		54242A232133C7D300457D7E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		54242A252133C7D300457D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54242A282133C7D300457D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		54242A2A2133C7D300457D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54242A2B2133C7D300457D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		54242A2D2133C7D300457D7E /* ZMTranslation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZMTranslation.entitlements; sourceTree = "<group>"; };
+		54242A332133C7E800457D7E /* WordTranslator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordTranslator.h; sourceTree = "<group>"; };
+		54242A342133C7E800457D7E /* WordTranslator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordTranslator.m; sourceTree = "<group>"; };
+		54242A392133CEAA00457D7E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		54242A3A2133D64100457D7E /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
+		54242A3B2133D64100457D7E /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
+		54242A3D2133D6EA00457D7E /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
+		54242A3E2133D6EA00457D7E /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
+		543F78452134F5E30028EFC6 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		543F78462134F5E30028EFC6 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		543F784B213517540028EFC6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		5964E161DE3E8F5C1A292BB8 /* libPods-ZMTranslation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMTranslation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B7EBBE32785FFEC79E7BAC7 /* Pods-ZMTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.debug.xcconfig"; sourceTree = "<group>"; };
+		CCA77344F75A565C87A52C5C /* Pods-ZMTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54242A192133C7D200457D7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0759960D264D786217E941C0 /* libPods-ZMTranslation.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35A36189DB0EF20DA60D1A92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5964E161DE3E8F5C1A292BB8 /* libPods-ZMTranslation.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54242A132133C7D200457D7E = {
+			isa = PBXGroup;
+			children = (
+				54242A1E2133C7D200457D7E /* ZMTranslation */,
+				54242A1D2133C7D200457D7E /* Products */,
+				DBF117EF18A40423B91E9AA8 /* Pods */,
+				35A36189DB0EF20DA60D1A92 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		54242A1D2133C7D200457D7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54242A1C2133C7D200457D7E /* ZMTranslation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54242A1E2133C7D200457D7E /* ZMTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				543F78452134F5E30028EFC6 /* Alert.h */,
+				543F78462134F5E30028EFC6 /* Alert.m */,
+				54242A3D2133D6EA00457D7E /* StringUtil.h */,
+				54242A3E2133D6EA00457D7E /* StringUtil.m */,
+				54242A3A2133D64100457D7E /* HttpUtil.h */,
+				54242A3B2133D64100457D7E /* HttpUtil.m */,
+				54242A1F2133C7D300457D7E /* AppDelegate.h */,
+				54242A202133C7D300457D7E /* AppDelegate.m */,
+				54242A222133C7D300457D7E /* ViewController.h */,
+				54242A232133C7D300457D7E /* ViewController.m */,
+				54242A332133C7E800457D7E /* WordTranslator.h */,
+				54242A342133C7E800457D7E /* WordTranslator.m */,
+				54242A392133CEAA00457D7E /* PrefixHeader.pch */,
+				54242A252133C7D300457D7E /* Assets.xcassets */,
+				543F784B213517540028EFC6 /* icon.png */,
+				54242A272133C7D300457D7E /* Main.storyboard */,
+				54242A2A2133C7D300457D7E /* Info.plist */,
+				54242A2B2133C7D300457D7E /* main.m */,
+				54242A2D2133C7D300457D7E /* ZMTranslation.entitlements */,
+			);
+			path = ZMTranslation;
+			sourceTree = "<group>";
+		};
+		DBF117EF18A40423B91E9AA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B7EBBE32785FFEC79E7BAC7 /* Pods-ZMTranslation.debug.xcconfig */,
+				CCA77344F75A565C87A52C5C /* Pods-ZMTranslation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54242A1B2133C7D200457D7E /* ZMTranslation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54242A302133C7D300457D7E /* Build configuration list for PBXNativeTarget "ZMTranslation" */;
+			buildPhases = (
+				FAE48F5A20394851DB7D0207 /* [CP] Check Pods Manifest.lock */,
+				54242A182133C7D200457D7E /* Sources */,
+				54242A192133C7D200457D7E /* Frameworks */,
+				54242A1A2133C7D200457D7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZMTranslation;
+			productName = ZMTranslation;
+			productReference = 54242A1C2133C7D200457D7E /* ZMTranslation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54242A142133C7D200457D7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Yuri Boyka";
+				TargetAttributes = {
+					54242A1B2133C7D200457D7E = {
+						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 54242A172133C7D200457D7E /* Build configuration list for PBXProject "ZMTranslation" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54242A132133C7D200457D7E;
+			productRefGroup = 54242A1D2133C7D200457D7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54242A1B2133C7D200457D7E /* ZMTranslation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54242A1A2133C7D200457D7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54242A262133C7D300457D7E /* Assets.xcassets in Resources */,
+				54242A292133C7D300457D7E /* Main.storyboard in Resources */,
+				543F784C213517540028EFC6 /* icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAE48F5A20394851DB7D0207 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZMTranslation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54242A182133C7D200457D7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54242A3F2133D6EB00457D7E /* StringUtil.m in Sources */,
+				54242A242133C7D300457D7E /* ViewController.m in Sources */,
+				54242A3C2133D64100457D7E /* HttpUtil.m in Sources */,
+				54242A352133C7E800457D7E /* WordTranslator.m in Sources */,
+				543F78472134F5E30028EFC6 /* Alert.m in Sources */,
+				54242A2C2133C7D300457D7E /* main.m in Sources */,
+				54242A212133C7D300457D7E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		54242A272133C7D300457D7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54242A282133C7D300457D7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		54242A2E2133C7D300457D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		54242A2F2133C7D300457D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		54242A312133C7D300457D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B7EBBE32785FFEC79E7BAC7 /* Pods-ZMTranslation.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZMTranslation/ZMTranslation.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/PrefixHeader.pch";
+				INFOPLIST_FILE = ZMTranslation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.godlike.ZMTranslation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		54242A322133C7D300457D7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA77344F75A565C87A52C5C /* Pods-ZMTranslation.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZMTranslation/ZMTranslation.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/PrefixHeader.pch";
+				INFOPLIST_FILE = ZMTranslation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.godlike.ZMTranslation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54242A172133C7D200457D7E /* Build configuration list for PBXProject "ZMTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54242A2E2133C7D300457D7E /* Debug */,
+				54242A2F2133C7D300457D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54242A302133C7D300457D7E /* Build configuration list for PBXNativeTarget "ZMTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54242A312133C7D300457D7E /* Debug */,
+				54242A322133C7D300457D7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54242A142133C7D200457D7E /* Project object */;
+}
