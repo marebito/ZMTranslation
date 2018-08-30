@@ -13,11 +13,16 @@
 		54242A262133C7D300457D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54242A252133C7D300457D7E /* Assets.xcassets */; };
 		54242A292133C7D300457D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54242A272133C7D300457D7E /* Main.storyboard */; };
 		54242A2C2133C7D300457D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A2B2133C7D300457D7E /* main.m */; };
-		54242A352133C7E800457D7E /* WordTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A342133C7E800457D7E /* WordTranslator.m */; };
+		54242A352133C7E800457D7E /* ZMWordTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A342133C7E800457D7E /* ZMWordTranslator.m */; };
 		54242A3C2133D64100457D7E /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3B2133D64100457D7E /* HttpUtil.m */; };
 		54242A3F2133D6EB00457D7E /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3E2133D6EA00457D7E /* StringUtil.m */; };
 		543F78472134F5E30028EFC6 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F78462134F5E30028EFC6 /* Alert.m */; };
 		543F784C213517540028EFC6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 543F784B213517540028EFC6 /* icon.png */; };
+		544787902137E9E8005A7B9C /* Test.vtt in Resources */ = {isa = PBXBuildFile; fileRef = 5447878D2137E9E8005A7B9C /* Test.vtt */; };
+		544787912137E9E8005A7B9C /* ZMSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447878E2137E9E8005A7B9C /* ZMSubtitle.m */; };
+		544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */; };
+		5447879E2137EB35005A7B9C /* ZMTranslateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447879D2137EB35005A7B9C /* ZMTranslateManager.m */; };
+		5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +36,8 @@
 		54242A2A2133C7D300457D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54242A2B2133C7D300457D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		54242A2D2133C7D300457D7E /* ZMTranslation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZMTranslation.entitlements; sourceTree = "<group>"; };
-		54242A332133C7E800457D7E /* WordTranslator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordTranslator.h; sourceTree = "<group>"; };
-		54242A342133C7E800457D7E /* WordTranslator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordTranslator.m; sourceTree = "<group>"; };
+		54242A332133C7E800457D7E /* ZMWordTranslator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMWordTranslator.h; sourceTree = "<group>"; };
+		54242A342133C7E800457D7E /* ZMWordTranslator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMWordTranslator.m; sourceTree = "<group>"; };
 		54242A392133CEAA00457D7E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		54242A3A2133D64100457D7E /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
 		54242A3B2133D64100457D7E /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
@@ -41,6 +46,15 @@
 		543F78452134F5E30028EFC6 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		543F78462134F5E30028EFC6 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		543F784B213517540028EFC6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		5447878D2137E9E8005A7B9C /* Test.vtt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test.vtt; sourceTree = "<group>"; };
+		5447878E2137E9E8005A7B9C /* ZMSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSubtitle.m; sourceTree = "<group>"; };
+		5447878F2137E9E8005A7B9C /* ZMSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMSubtitle.h; sourceTree = "<group>"; };
+		544787922137EA6D005A7B9C /* ZMSubtitleTranslator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMSubtitleTranslator.h; sourceTree = "<group>"; };
+		544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMSubtitleTranslator.m; sourceTree = "<group>"; };
+		5447879C2137EB35005A7B9C /* ZMTranslateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMTranslateManager.h; sourceTree = "<group>"; };
+		5447879D2137EB35005A7B9C /* ZMTranslateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMTranslateManager.m; sourceTree = "<group>"; };
+		5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMFileOperation.h; sourceTree = "<group>"; };
+		5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMFileOperation.m; sourceTree = "<group>"; };
 		5964E161DE3E8F5C1A292BB8 /* libPods-ZMTranslation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMTranslation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EBBE32785FFEC79E7BAC7 /* Pods-ZMTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.debug.xcconfig"; sourceTree = "<group>"; };
 		CCA77344F75A565C87A52C5C /* Pods-ZMTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,18 +101,23 @@
 		54242A1E2133C7D200457D7E /* ZMTranslation */ = {
 			isa = PBXGroup;
 			children = (
+				544787952137EA73005A7B9C /* Subtitle */,
 				543F78452134F5E30028EFC6 /* Alert.h */,
 				543F78462134F5E30028EFC6 /* Alert.m */,
 				54242A3D2133D6EA00457D7E /* StringUtil.h */,
 				54242A3E2133D6EA00457D7E /* StringUtil.m */,
+				5447879C2137EB35005A7B9C /* ZMTranslateManager.h */,
+				5447879D2137EB35005A7B9C /* ZMTranslateManager.m */,
 				54242A3A2133D64100457D7E /* HttpUtil.h */,
 				54242A3B2133D64100457D7E /* HttpUtil.m */,
 				54242A1F2133C7D300457D7E /* AppDelegate.h */,
 				54242A202133C7D300457D7E /* AppDelegate.m */,
 				54242A222133C7D300457D7E /* ViewController.h */,
 				54242A232133C7D300457D7E /* ViewController.m */,
-				54242A332133C7E800457D7E /* WordTranslator.h */,
-				54242A342133C7E800457D7E /* WordTranslator.m */,
+				54242A332133C7E800457D7E /* ZMWordTranslator.h */,
+				54242A342133C7E800457D7E /* ZMWordTranslator.m */,
+				5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */,
+				5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */,
 				54242A392133CEAA00457D7E /* PrefixHeader.pch */,
 				54242A252133C7D300457D7E /* Assets.xcassets */,
 				543F784B213517540028EFC6 /* icon.png */,
@@ -108,6 +127,18 @@
 				54242A2D2133C7D300457D7E /* ZMTranslation.entitlements */,
 			);
 			path = ZMTranslation;
+			sourceTree = "<group>";
+		};
+		544787952137EA73005A7B9C /* Subtitle */ = {
+			isa = PBXGroup;
+			children = (
+				5447878D2137E9E8005A7B9C /* Test.vtt */,
+				5447878F2137E9E8005A7B9C /* ZMSubtitle.h */,
+				5447878E2137E9E8005A7B9C /* ZMSubtitle.m */,
+				544787922137EA6D005A7B9C /* ZMSubtitleTranslator.h */,
+				544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */,
+			);
+			path = Subtitle;
 			sourceTree = "<group>";
 		};
 		DBF117EF18A40423B91E9AA8 /* Pods */ = {
@@ -182,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544787902137E9E8005A7B9C /* Test.vtt in Resources */,
 				54242A262133C7D300457D7E /* Assets.xcassets in Resources */,
 				54242A292133C7D300457D7E /* Main.storyboard in Resources */,
 				543F784C213517540028EFC6 /* icon.png in Resources */,
@@ -216,13 +248,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544787912137E9E8005A7B9C /* ZMSubtitle.m in Sources */,
 				54242A3F2133D6EB00457D7E /* StringUtil.m in Sources */,
 				54242A242133C7D300457D7E /* ViewController.m in Sources */,
+				5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */,
 				54242A3C2133D64100457D7E /* HttpUtil.m in Sources */,
-				54242A352133C7E800457D7E /* WordTranslator.m in Sources */,
+				54242A352133C7E800457D7E /* ZMWordTranslator.m in Sources */,
+				544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */,
 				543F78472134F5E30028EFC6 /* Alert.m in Sources */,
 				54242A2C2133C7D300457D7E /* main.m in Sources */,
 				54242A212133C7D300457D7E /* AppDelegate.m in Sources */,
+				5447879E2137EB35005A7B9C /* ZMTranslateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

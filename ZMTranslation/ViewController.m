@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "WordTranslator.h"
+#import "ZMWordTranslator.h"
 #import "Alert.h"
+#import "ZMSubtitleTranslator.h"
 
 // E-欧路 I-ICBA G-google T-腾讯 B-百度 Y-有道
 
@@ -29,12 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.cacheTranslate = [[NSMutableDictionary alloc] init];
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor =
         [NSColor colorWithRed:58.0 / 255.0 green:61.0 / 255.0 blue:63.0 / 255.0 alpha:1.0].CGColor;
     self.originTextView.textColor = [NSColor colorWithRed:145 / 255.0 green:125 / 255.0 blue:82 / 255.0 alpha:1.0];
     self.translateTextView.textColor = [NSColor colorWithRed:94 / 255.0 green:111 / 255.0 blue:79 / 255.0 alpha:1.0];
+    
+    //    NSString *vvtContent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Test" ofType:@"vtt"] encoding:NSUTF8StringEncoding error:nil];
+    [ZMSubtitleTranslator translateSubtitle:[[NSBundle mainBundle] pathForResource:@"Test" ofType:@"vtt"]];
 }
 
 - (void)viewDidAppear { [super viewDidAppear]; }
@@ -117,7 +122,7 @@
         }
     }
     __weak typeof(self) weakSelf = self;
-    [WordTranslator tranlateWord:str
+    [ZMWordTranslator tranlateWord:str
                           engine:engine
                       completion:^(BOOL success, NSString *result) {
                           __strong typeof(self) strongSelf = weakSelf;

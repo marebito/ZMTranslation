@@ -1,16 +1,16 @@
 //
-//  WordTranslator.m
+//  ZMWordTranslator.m
 //  ZMTranslation
 //
 //  Created by Yuri Boyka on 2018/8/27.
 //  Copyright © 2018年 Yuri Boyka. All rights reserved.
 //
 
-#import "WordTranslator.h"
+#import "ZMWordTranslator.h"
 #import "AFNetworking.h"
 #import "HttpUtil.h"
 
-@implementation WordTranslator
+@implementation ZMWordTranslator
 
 + (void)tranlateWord:(NSString *)word
               engine:(kTranslateEngine)engine
@@ -174,21 +174,21 @@
                        break;
                        case kTranslateEngineTencent:
                        {
-                           result = [WordTranslator parseTranslateResult:responseObject
+                           result = [ZMWordTranslator parseTranslateResult:responseObject
                                                                     keys:@[ @"translate", @"records" ]
                                                                 transKey:@"targetText"];
                        }
                        break;
                        case kTranslateEngineBaidu:
                        {
-                           result = [WordTranslator parseTranslateResult:responseObject
+                           result = [ZMWordTranslator parseTranslateResult:responseObject
                                                                     keys:@[ @"phonetic" ]
                                                                 transKey:@"src_str"];
                        }
                        break;
                        case kTranslateEngineYouDao:
                        {
-                           result = [WordTranslator parseTranslateResult:responseObject
+                           result = [ZMWordTranslator parseTranslateResult:responseObject
                                                                     keys:@[ @"translateResult" ]
                                                                 transKey:@"tgt"];
                        }

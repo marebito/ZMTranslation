@@ -30,6 +30,10 @@
 #define __RD__(o) [[NSString alloc] initWithData:o encoding:NSUTF8StringEncoding]
 #define __JSONDIC__(o) [NSJSONSerialization JSONObjectWithData:o options:NSJSONReadingMutableContainers error:nil];
 
+#define WEBVTT_REGEX1 @"^((\\d){2}:)(\\d){2}.(\\d){3}.{5}((\\d){2}:)(\\d){2}.(\\d){3}"
+#define WEBVTT_REGEX2 @"^((\\d){2}:){2}(\\d){2}.(\\d){3}\\s(-){2}>\\s((\\d){2}:){2}(\\d){2}.(\\d){3}"
+
+
 /****************************************************/
 /*                      ICBA                        */
 /****************************************************/

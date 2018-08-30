@@ -1,5 +1,5 @@
 //
-//  WordTranslator.h
+//  ZMWordTranslator.h
 //  ZMTranslation
 //
 //  Created by Yuri Boyka on 2018/8/27.
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, kTranslateEngine) {
     kTranslateEngineYouDao
 };
 
-@interface WordTranslator : NSObject
+@interface ZMWordTranslator : NSObject
 
 + (void)tranlateWord:(NSString *)word
               engine:(kTranslateEngine)engine
