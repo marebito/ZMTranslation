@@ -14,6 +14,7 @@
 {
     if (nil != (self = [super init]))
     {
+        self.no = @"-1";
         self.timestamp = @"";
         self.originText = [[NSMutableArray alloc] init];
         self.transText = [[NSMutableDictionary alloc] init];

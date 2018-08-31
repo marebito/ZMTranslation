@@ -10,6 +10,7 @@
 
 @interface ZMSubtitle : NSObject
 
+@property(nonatomic, copy) NSString *no;
 @property(nonatomic, copy) NSString *timestamp;
 @property(nonatomic, strong) NSMutableArray *originText;
 @property(nonatomic, strong) NSMutableDictionary *transText;

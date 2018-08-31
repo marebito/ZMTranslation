@@ -44,8 +44,15 @@
             }
             else
             {
-                NSArray *result = __MREGEX__(obj, @"((\\d){2}:)(\\d){2}.(\\d){3}.{5}((\\d){2}:)(\\d){2}.(\\d){3}");
-                if ([result count] > 0)
+                NSArray *isno = __MREGEX__(obj, @"^[0-9]*$");
+                NSArray *result = __MREGEX__(obj, @"((\\d){2}:)(\\d){2}:(\\d){2}.(\\d){3}.{5}((\\d){2}:)(\\d){2}:(\\d){2}.(\\d){3}");
+                if ([isno count] > 0)
+                {
+                    sub.no = obj;
+                    [finalString appendString:obj];
+                    [finalString appendString:@"\n"];
+                }
+                else if ([result count] > 0)
                 {
                     sub.timestamp = obj;
                     [finalString appendString:obj];
@@ -68,24 +75,31 @@
                 addTask:[ZMTranslateRequest
                             requestWithText:str
                                    callback:^(BOOL success, NSString *translateResult) {
+                                       if (!success)
+                                       {
+                                           NSLog(@"翻译失败");
+                                       }
                                        count--;
                                        [subtitle.transText setObject:translateResult forKey:str];
+                                       NSLog(@"剩余-->%ld", (long)count);
                                        if (count == 0)
                                        {
                                            NSString *finalString = [ZMSubtitleTranslator processSubtitles:subtitles];
-                                           [ZMFileOperation
-                                               selectFilePath:^(NSInteger response, NSString *filePath) {
-                                                   NSString *vttPath = [filePath stringByAppendingPathComponent:@"test.vtt"];
-                                                   if ([[NSFileManager defaultManager] removeItemAtPath:vttPath error:nil]) {
-                                                       [finalString
-                                                        writeToFile:vttPath
-                                                        atomically:YES
-                                                        encoding:NSUTF8StringEncoding
-                                                        error:nil];
-                                                   }
+                                           [ZMFileOperation selectFilePath:^(NSInteger response, NSString *filePath) {
+                                               NSString *vttPath =
+                                                   [filePath stringByAppendingPathComponent:@"test.vtt"];
+                                               if ([[NSFileManager defaultManager] fileExistsAtPath:vttPath])
+                                               {
+                                                   [[NSFileManager defaultManager] removeItemAtPath:vttPath error:nil];
                                                }
-                                                       window:[[NSApplication sharedApplication] mainWindow]
-                                                    isPresent:YES];
+                                               [finalString writeToFile:vttPath
+                                                             atomically:YES
+                                                               encoding:NSUTF8StringEncoding
+                                                                  error:nil];
+                                           }
+                                                                    window:[[NSApplication sharedApplication]
+                                                                               mainWindow]
+                                                                 isPresent:YES];
                                        }
                                    }]];
         }];
@@ -98,6 +112,11 @@
     [finalString appendString:@"WEBVTT"];
     [finalString appendString:@"\n\n"];
     [subtitles enumerateObjectsUsingBlock:^(ZMSubtitle *subtitle, NSUInteger subtitleIdx, BOOL *_Nonnull stop) {
+        if ([subtitle.no integerValue] != -1)
+        {
+            [finalString appendString:subtitle.no];
+            [finalString appendString:@"\n"];
+        }
         [finalString appendString:subtitle.timestamp];
         [finalString appendString:@"\n"];
         [subtitle.originText enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *_Nonnull stop) {
