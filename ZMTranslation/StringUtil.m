@@ -8,6 +8,51 @@
 
 #import "StringUtil.h"
 
+@implementation NSString (Split)
+
+- (NSArray *)componentsSeparatedByLength:(int)length
+{
+    NSMutableArray *array = [NSMutableArray array];
+    NSArray *paragraphs = [self componentsSeparatedByString:@"\n"];
+    NSEnumerator *enumerator = [paragraphs objectEnumerator];
+    NSString *paragraph;
+
+    while ((paragraph = [enumerator nextObject]))
+    {
+        NSScanner *wordScanner = [NSScanner scannerWithString:paragraph];
+        NSCharacterSet *whiteSpace = [NSCharacterSet whitespaceCharacterSet];
+        NSString *word = nil;
+        NSString *separator = nil;
+        NSMutableString *line = [NSMutableString stringWithCapacity:length];
+
+        [wordScanner setCharactersToBeSkipped:[NSCharacterSet illegalCharacterSet]];
+
+        while (![wordScanner isAtEnd])
+        {
+            [wordScanner scanUpToCharactersFromSet:whiteSpace intoString:&word];
+            [wordScanner scanCharactersFromSet:whiteSpace intoString:&separator];
+
+            if (([line length] + [word length] + [separator length]) <= length)
+            {
+                [line appendString:word];
+                [line appendString:separator];
+            }
+            else
+            {
+                [array addObject:line];
+                line = [NSMutableString stringWithString:word];
+                [line appendString:separator];
+            }
+        }
+
+        [array addObject:line];
+    }
+
+    return array;
+}
+
+@end
+
 static inline int min(int a, int b, int c)
 {
     int min = a;
@@ -109,8 +154,12 @@ static inline int min(int a, int b, int c)
 
 - (NSArray *)matchWithRegex:(NSString *)regex
 {
-    NSRegularExpression *expression =
-        [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:nil];
+    return [self matchWithRegex:regex option:NSRegularExpressionCaseInsensitive];
+}
+
+- (NSArray *)matchWithRegex:(NSString *)regex option:(NSRegularExpressionOptions)option
+{
+    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:regex options:option error:nil];
 
     NSArray *matches = [expression matchesInString:self options:0 range:NSMakeRange(0, [self length])];
     // match: 所有匹配到的字符,根据() 包含级

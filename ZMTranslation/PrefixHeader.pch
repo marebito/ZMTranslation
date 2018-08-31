@@ -24,6 +24,7 @@
 #define __HEADV__(o,k) ((NSHTTPURLResponse *)o).allHeaderFields[k]
 #define __SETCOOKIE__(o) ((NSHTTPURLResponse *)o).allHeaderFields[@"Set-Cookie"]
 
+#define __DREGEX__(string, regex) [string matchWithRegex:regex option:NSRegularExpressionDotMatchesLineSeparators]
 #define __MREGEX__(string, regex) [string matchWithRegex:regex];
 #define __VREGEX__(string, keyword, suffix) [string stringByKeyWord:keyword withSuffix:suffix]
 

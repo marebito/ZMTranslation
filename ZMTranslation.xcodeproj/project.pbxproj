@@ -23,6 +23,7 @@
 		544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */; };
 		5447879E2137EB35005A7B9C /* ZMTranslateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447879D2137EB35005A7B9C /* ZMTranslateManager.m */; };
 		5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */; };
+		54A4A9642139137D00EE944E /* ZMSentenceSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		5447879D2137EB35005A7B9C /* ZMTranslateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMTranslateManager.m; sourceTree = "<group>"; };
 		5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMFileOperation.h; sourceTree = "<group>"; };
 		5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMFileOperation.m; sourceTree = "<group>"; };
+		54A4A9622139137D00EE944E /* ZMSentenceSplitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMSentenceSplitter.h; sourceTree = "<group>"; };
+		54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMSentenceSplitter.m; sourceTree = "<group>"; };
 		5964E161DE3E8F5C1A292BB8 /* libPods-ZMTranslation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMTranslation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EBBE32785FFEC79E7BAC7 /* Pods-ZMTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.debug.xcconfig"; sourceTree = "<group>"; };
 		CCA77344F75A565C87A52C5C /* Pods-ZMTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMTranslation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMTranslation/Pods-ZMTranslation.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				54242A342133C7E800457D7E /* ZMWordTranslator.m */,
 				5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */,
 				5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */,
+				54A4A9622139137D00EE944E /* ZMSentenceSplitter.h */,
+				54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */,
 				54242A392133CEAA00457D7E /* PrefixHeader.pch */,
 				54242A252133C7D300457D7E /* Assets.xcassets */,
 				543F784B213517540028EFC6 /* icon.png */,
@@ -254,6 +259,7 @@
 				5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */,
 				54242A3C2133D64100457D7E /* HttpUtil.m in Sources */,
 				54242A352133C7E800457D7E /* ZMWordTranslator.m in Sources */,
+				54A4A9642139137D00EE944E /* ZMSentenceSplitter.m in Sources */,
 				544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */,
 				543F78472134F5E30028EFC6 /* Alert.m in Sources */,
 				54242A2C2133C7D300457D7E /* main.m in Sources */,

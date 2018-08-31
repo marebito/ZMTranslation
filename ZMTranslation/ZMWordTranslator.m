@@ -255,4 +255,11 @@ static NSMutableDictionary *retryCache;
     return [NSString stringWithString:string];
 }
 
++ (NSArray *)splitWord:(NSString *)word
+{
+    // 每5000字截取一段，然后调用接口 . ? !
+    NSArray *array = [word componentsSeparatedByLength:5000];
+    return nil;
+}
+
 @end

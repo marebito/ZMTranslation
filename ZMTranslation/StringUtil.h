@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSString (Split)
+
+- (NSArray *)componentsSeparatedByLength:(int)length;
+
+@end
+
 @interface NSString (Similarity)
 
 + (float)sim:(NSString *)str1 str2:(NSString *)str2;
@@ -17,6 +23,15 @@
 @interface NSString (RegexUtil)
 
 - (NSString *)URLEncodedString;
+
+/**
+ 正则匹配安徽符合要求的字符串 数组
+
+ @param regex 正则表达式
+ @param option 正则选项
+ @return 符合要求的字符串 数组 (按(),分级,正常0)
+ */
+- (NSArray *)matchWithRegex:(NSString *)regex option:(NSRegularExpressionOptions)option;
 
 /**
  *  正则匹配返回符合要求的字符串 数组
