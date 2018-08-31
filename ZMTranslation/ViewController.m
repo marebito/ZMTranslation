@@ -37,8 +37,7 @@
         [NSColor colorWithRed:58.0 / 255.0 green:61.0 / 255.0 blue:63.0 / 255.0 alpha:1.0].CGColor;
     self.originTextView.textColor = [NSColor colorWithRed:145 / 255.0 green:125 / 255.0 blue:82 / 255.0 alpha:1.0];
     self.translateTextView.textColor = [NSColor colorWithRed:94 / 255.0 green:111 / 255.0 blue:79 / 255.0 alpha:1.0];
-    
-    //    NSString *vvtContent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Test" ofType:@"vtt"] encoding:NSUTF8StringEncoding error:nil];
+
     [ZMSubtitleTranslator translateSubtitle:[[NSBundle mainBundle] pathForResource:@"Test" ofType:@"vtt"]];
 }
 
@@ -123,32 +122,32 @@
     }
     __weak typeof(self) weakSelf = self;
     [ZMWordTranslator tranlateWord:str
-                          engine:engine
-                      completion:^(BOOL success, NSString *result) {
-                          __strong typeof(self) strongSelf = weakSelf;
-                          if (success)
-                          {
-                              if (dic)
-                              {
-                                  dic[transKey] = result;
-                              }
-                              else
-                              {
-                                  NSMutableDictionary *transDic = [NSMutableDictionary dictionary];
-                                  transDic[transKey] = result;
-                                  strongSelf.cacheTranslate[str] = transDic;
-                              }
-                              strongSelf.translateTextView.string = result;
-                          }
-                          else
-                          {
-                              [Alert alertWithStyle:kAlertStyleSheet
-                                             titles:@[ @"确定" ]
-                                            message:@"发生严重错误，请重试!!!"
-                                        informative:result
-                                         clickBlock:nil];
-                          }
-                      }];
+                            engine:engine
+                        completion:^(BOOL success, NSString *result) {
+                            __strong typeof(self) strongSelf = weakSelf;
+                            if (success)
+                            {
+                                if (dic)
+                                {
+                                    dic[transKey] = result;
+                                }
+                                else
+                                {
+                                    NSMutableDictionary *transDic = [NSMutableDictionary dictionary];
+                                    transDic[transKey] = result;
+                                    strongSelf.cacheTranslate[str] = transDic;
+                                }
+                                strongSelf.translateTextView.string = result;
+                            }
+                            else
+                            {
+                                [Alert alertWithStyle:kAlertStyleSheet
+                                               titles:@[ @"确定" ]
+                                              message:@"发生严重错误，请重试!!!"
+                                          informative:result
+                                           clickBlock:nil];
+                            }
+                        }];
 }
 
 - (NSString *)pasteBoardContent

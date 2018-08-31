@@ -27,8 +27,6 @@
     [array enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         if ([obj rangeOfString:@"WEBVTT"].location != NSNotFound)
         {
-            // 直接写入
-            NSLog(@"WEBVTT头");
             [finalString appendString:@"WEBVTT"];
         }
         else
@@ -44,8 +42,8 @@
             }
             else
             {
-                NSArray *isno = __MREGEX__(obj, @"^[0-9]*$");
-                NSArray *result = __MREGEX__(obj, @"((\\d){2}:)(\\d){2}:(\\d){2}.(\\d){3}.{5}((\\d){2}:)(\\d){2}:(\\d){2}.(\\d){3}");
+                NSArray *result = __MREGEX__(obj, WEBVTT_REGEX2);
+                NSArray *isno = __MREGEX__(obj, WEBVTT_REGEX3);
                 if ([isno count] > 0)
                 {
                     sub.no = obj;
@@ -70,6 +68,14 @@
     }];
     [[ZMTranslateManager defaultManager] setEngine:kTranslateEngineGoogle];
     [subtitles enumerateObjectsUsingBlock:^(ZMSubtitle *subtitle, NSUInteger idx, BOOL *_Nonnull stop) {
+        [[ZMTranslateManager defaultManager]
+            addTask:[ZMTranslateRequest requestWithText:[subtitle.originText componentsJoinedByString:@" "]
+                                               callback:^(BOOL success, NSString *translateResult) {
+                                                   if (success)
+                                                   {
+                                                       subtitle.jointTranslate = translateResult;
+                                                   }
+                                               }]];
         [subtitle.originText enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *_Nonnull stop) {
             [[ZMTranslateManager defaultManager]
                 addTask:[ZMTranslateRequest
@@ -77,13 +83,13 @@
                                    callback:^(BOOL success, NSString *translateResult) {
                                        if (!success)
                                        {
-                                           NSLog(@"翻译失败");
+                                           NSLog(@"发生严重错误!!!");
                                        }
                                        count--;
                                        [subtitle.transText setObject:translateResult forKey:str];
-                                       NSLog(@"剩余-->%ld", (long)count);
                                        if (count == 0)
                                        {
+                                           // TODO: 字幕人工校验
                                            NSString *finalString = [ZMSubtitleTranslator processSubtitles:subtitles];
                                            [ZMFileOperation selectFilePath:^(NSInteger response, NSString *filePath) {
                                                NSString *vttPath =
@@ -112,6 +118,11 @@
     [finalString appendString:@"WEBVTT"];
     [finalString appendString:@"\n\n"];
     [subtitles enumerateObjectsUsingBlock:^(ZMSubtitle *subtitle, NSUInteger subtitleIdx, BOOL *_Nonnull stop) {
+        __block NSMutableString *translateJointString = [[NSMutableString alloc] init];
+        [subtitle.originText enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *_Nonnull stop) {
+            [translateJointString appendString:subtitle.transText[str]];
+        }];
+        subtitle.similarity = [NSString sim:translateJointString str2:subtitle.jointTranslate];
         if ([subtitle.no integerValue] != -1)
         {
             [finalString appendString:subtitle.no];
@@ -119,10 +130,18 @@
         }
         [finalString appendString:subtitle.timestamp];
         [finalString appendString:@"\n"];
-        [subtitle.originText enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *_Nonnull stop) {
-            [finalString appendString:subtitle.transText[str]];
+        if (subtitle.similarity >= 0.7)
+        {
+            [subtitle.originText enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *_Nonnull stop) {
+                [finalString appendString:subtitle.transText[str]];
+                [finalString appendString:@"\n"];
+            }];
+        }
+        else
+        {
+            [finalString appendString:translateJointString];
             [finalString appendString:@"\n"];
-        }];
+        }
         [finalString appendString:@"\n"];
     }];
     return [finalString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];

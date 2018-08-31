@@ -8,6 +8,87 @@
 
 #import "StringUtil.h"
 
+static inline int min(int a, int b, int c)
+{
+    int min = a;
+    a = b < c ? b : c;
+    return min < a ? min : a;
+}
+
+@implementation NSString (Similarity)
+
+/*
+ 计算相似度，数值越大越相似，最大为1，表示相同,
+ */
++ (float)sim:(NSString *)str1 str2:(NSString *)str2
+{
+    long ld = [NSString ld:str1 str2:str2];
+    return 1.0 - MIN(1.0, (float)ld / (float)MAX(str1.length, str1.length));
+}
+
+/*
+ *计算距离
+ */
++ (long)ld:(NSString *)str1 str2:(NSString *)str2
+{
+    long n = str1.length;
+    long m = str2.length;
+
+    if (n == 0)
+    {
+        return m;
+    }
+
+    if (m == 0)
+    {
+        return n;
+    }
+
+    int d[n + 1][m + 1];  //矩阵
+    int i;                //遍历str1的
+    int j;                //遍历str2的
+    unichar ch1;          // str1的
+    unichar ch2;          // str2的
+    int temp;             //记录相同字符,在某个矩阵位置值的增量,不是0就是1
+
+    for (i = 0; i <= n; i++)
+    {
+        //初始化第一列
+        d[i][0] = i;
+    }
+
+    for (j = 0; j <= m; j++)
+    {
+        //初始化第一行
+        d[0][j] = j;
+    }
+
+    for (i = 1; i <= n; i++)
+    {
+        //遍历str1
+        ch1 = [str1 characterAtIndex:(i - 1)];
+        //去匹配str2
+        for (j = 1; j <= m; j++)
+        {
+            ch2 = [str2 characterAtIndex:(j - 1)];  // str2.charAt(j-1);
+
+            if (ch1 == ch2)
+            {
+                temp = 0;
+            }
+            else
+            {
+                temp = 1;
+            }
+            //左边+1,上边+1,左上角+temp取最小
+            d[i][j] = min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + temp);
+        }
+    }
+
+    return d[n][m];
+}
+@end
+
 @implementation NSString (RegexUtil)
 //(\w)=(\d+)
 

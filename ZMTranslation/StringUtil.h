@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSString (Similarity)
+
++ (float)sim:(NSString *)str1 str2:(NSString *)str2;
+
+@end
+
 @interface NSString (RegexUtil)
 
 - (NSString *)URLEncodedString;

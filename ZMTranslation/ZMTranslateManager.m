@@ -74,7 +74,7 @@
 
 - (void)main
 {
-    [NSThread sleepForTimeInterval:1.0];
+    [NSThread sleepForTimeInterval:0.15];
     [ZMWordTranslator tranlateWord:self.request.originText
                             engine:[ZMTranslateManager defaultManager].engine
                         completion:self.request.translateComplete];

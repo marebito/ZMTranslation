@@ -14,5 +14,7 @@
 @property(nonatomic, copy) NSString *timestamp;
 @property(nonatomic, strong) NSMutableArray *originText;
 @property(nonatomic, strong) NSMutableDictionary *transText;
+@property(nonatomic, copy) NSString *jointTranslate;
+@property(nonatomic, assign) float similarity;
 
 @end

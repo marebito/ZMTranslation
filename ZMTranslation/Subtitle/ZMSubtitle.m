@@ -18,6 +18,8 @@
         self.timestamp = @"";
         self.originText = [[NSMutableArray alloc] init];
         self.transText = [[NSMutableDictionary alloc] init];
+        self.jointTranslate = @"";
+        self.similarity = 0.0;
     }
     return self;
 }

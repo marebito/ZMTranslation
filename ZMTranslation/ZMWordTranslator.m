@@ -10,12 +10,21 @@
 #import "AFNetworking.h"
 #import "HttpUtil.h"
 
+static NSMutableDictionary *retryCache;
+
 @implementation ZMWordTranslator
 
 + (void)tranlateWord:(NSString *)word
               engine:(kTranslateEngine)engine
           completion:(void (^)(BOOL success, NSString *result))completion
 {
+    @synchronized(retryCache)
+    {
+        if (!retryCache)
+        {
+            retryCache = [[NSMutableDictionary alloc] init];
+        }
+    }
     NSString *url = nil;
     NSString *method = @"POST";
     NSString *host = nil;
@@ -169,38 +178,57 @@
                            result = __RD__(responseObject);
                            result = __VREGEX__(result, @"TRANSLATED_TEXT='", @";");
                            result = [result stringByReplacingOccurrencesOfString:@"\\x3cbr\\x3e" withString:@"\n"];
+                           result = [result stringByReplacingOccurrencesOfString:@"\\x26#3" withString:@"'"];
                            result = [result substringToIndex:result.length - 1];
                        }
                        break;
                        case kTranslateEngineTencent:
                        {
                            result = [ZMWordTranslator parseTranslateResult:responseObject
-                                                                    keys:@[ @"translate", @"records" ]
-                                                                transKey:@"targetText"];
+                                                                      keys:@[ @"translate", @"records" ]
+                                                                  transKey:@"targetText"];
                        }
                        break;
                        case kTranslateEngineBaidu:
                        {
                            result = [ZMWordTranslator parseTranslateResult:responseObject
-                                                                    keys:@[ @"phonetic" ]
-                                                                transKey:@"src_str"];
+                                                                      keys:@[ @"phonetic" ]
+                                                                  transKey:@"src_str"];
                        }
                        break;
                        case kTranslateEngineYouDao:
                        {
                            result = [ZMWordTranslator parseTranslateResult:responseObject
-                                                                    keys:@[ @"translateResult" ]
-                                                                transKey:@"tgt"];
+                                                                      keys:@[ @"translateResult" ]
+                                                                  transKey:@"tgt"];
                        }
                        break;
                        default:
                            break;
                    }
-                   completion(YES, result);
+                   [retryCache removeObjectForKey:word];
+                   if (completion) completion(YES, result);
                }
                else
                {
-                   completion(NO, [error description]);
+                   NSNumber *number = retryCache[word];
+                   if (number)
+                   {
+                       if ([number integerValue] == 3)
+                       {
+                           [retryCache removeObjectForKey:word];
+                           if (completion) completion(NO, [error description]);
+                           return;
+                       }
+                   }
+                   else
+                   {
+                       number = @(0);
+                       [retryCache setObject:number forKey:word];
+                   }
+                   [NSThread sleepForTimeInterval:1.0];
+                   [retryCache setObject:@([number integerValue] + 1) forKey:word];
+                   [ZMWordTranslator tranlateWord:word engine:engine completion:completion];
                }
            }];
 }
