@@ -289,21 +289,19 @@
 + (NSInteger)getStartOfSentRobustly:(NSString *)sent wholeDoc:(NSString *)wholeDoc lastend:(NSInteger)lastend
 {
     NSArray *wordsOfSent = [sent componentsSeparatedByString:@" "];
-    NSInteger begin = [wholeDoc rangeOfString:wordsOfSent[0]].location;
-    if (begin == NSNotFound) begin = lastend;
-    return begin == -1 ? (lastend + 1) : begin;
+    NSInteger begin = [[wholeDoc substringFromIndex:lastend] rangeOfString:wordsOfSent[0]].location;
+    return lastend + begin;
 }
 
 + (NSInteger)getEndOfSentRobustly:(NSString *)sent wholeDoc:(NSString *)wholeDoc begin:(NSInteger)begin
 {
     NSArray *wordsOfSent = [sent componentsSeparatedByString:@" "];
-    NSInteger start = begin - 1, end = start;
+    NSInteger start = begin, end = start;
     for (int i = 0; i < wordsOfSent.count; i++)
     {
         NSString *thisTok = [wordsOfSent objectAtIndex:i];
-        NSInteger startOfTok = [wholeDoc rangeOfString:thisTok].location;
-        if (startOfTok == NSNotFound) startOfTok = begin;
-        end = startOfTok > -1 ? startOfTok + thisTok.length : end + thisTok.length;
+        NSRange range = [[wholeDoc substringFromIndex:end] rangeOfString:thisTok];
+        end += range.location + range.length;
     }
     return end;
 }
