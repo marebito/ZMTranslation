@@ -10,6 +10,8 @@
 
 @class ONOXMLElement;
 
+#define REQUEST_LOG 0
+
 #define __UD__ [NSUserDefaults standardUserDefaults]
 #define __UDGET__(o) [__UD__ objectForKey:o]
 #define __UDSET__(k, v) [__UD__ setObject:v forKey:k]

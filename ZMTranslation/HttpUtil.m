@@ -161,7 +161,9 @@
      completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completion
 {
     [HttpUtil clearAllCookies];
+#if REQUEST_LOG
     NSLog(@"\n[请求链接]:%@\n[请求方式]:%@\n[请求头]:\n%@\n[参数]:\n%@\n", url, method, headers, params);
+#endif
     NSMutableURLRequest *request =
         [[AFHTTPRequestSerializer serializer] requestWithMethod:method URLString:url parameters:params error:nil];
     request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
@@ -176,15 +178,19 @@
     [manager setTaskWillPerformHTTPRedirectionBlock:^NSURLRequest *_Nullable(
                  NSURLSession *_Nonnull session, NSURLSessionTask *_Nonnull task, NSURLResponse *_Nonnull response,
                  NSURLRequest *_Nonnull request) {
+#if REQUEST_LOG
         NSLog(@"\n[响应状态码] : \n%ld\n\n[响应头] : \n%@\n\n", (long)((NSHTTPURLResponse *)response).statusCode,
               ((NSHTTPURLResponse *)response).allHeaderFields);
+#endif
         if ((long)((NSHTTPURLResponse *)response).statusCode == kCFErrorHTTPConnectionLost &&
             ((NSHTTPURLResponse *)response).allHeaderFields[@"Location"])
         {
             NSString *location = __HEADV__(response, @"Location");
             NSString *baiduid = __VREGEX__(__SETCOOKIE__(response), @"BAIDUID=", @";");
+#if REQUEST_LOG
             NSLog(@"\n[重定向链接]:%@\n[BAIDUID]:%@\n[请求方式]:%@\n[请求头]:\n%@\n[参数]:\n%@\n", location, baiduid,
                   method, headers, params);
+#endif
             if (location.length > 0)
             {
                 __UDSET__(@"Location", location);
@@ -207,10 +213,12 @@
               id responseObjectCopy = [responseObject copy];
               NSURLResponse *responseCopy = [response copy];
               NSString *responseJSON = [[NSString alloc] initWithData:responseObjectCopy encoding:NSUTF8StringEncoding];
+#if REQUEST_LOG
               NSLog(@"\n[响应状态码] : \n%ld\n\n[响应头] : \n%@\n\n[返回数据] : \n%@\n\n[错误] : \n%@\n",
                     (long)((NSHTTPURLResponse *)responseCopy).statusCode,
                     ((NSHTTPURLResponse *)responseCopy).allHeaderFields, responseJSON,
                     error ? [error debugDescription] : @"无");
+#endif
               if (completion)
               {
                   completion(response, responseObject, error);

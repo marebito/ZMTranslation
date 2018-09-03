@@ -10,9 +10,8 @@
 #import "ZMWordTranslator.h"
 #import "Alert.h"
 #import "ZMSubtitleTranslator.h"
-#import "ZMSentenceSplitter.h"
 
-// E-欧路 I-ICBA G-google T-腾讯 B-百度 Y-有道
+// E-欧路 I-ICBA G-google B-Bing T-腾讯 BD-百度 Y-有道
 
 @interface ViewController ()
 
@@ -28,6 +27,44 @@
 
 @implementation ViewController
 
+- (NSArray *)getLastIndexes:(NSArray *)tmpArray
+{
+    NSMutableArray *splitIndexes = [NSMutableArray arrayWithObject:@(0)];
+    __block NSUInteger lastIndex = 0;
+    __block NSUInteger indexOffset = 0;
+    [tmpArray enumerateObjectsUsingBlock:^(NSArray *obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        if ([obj[2] longLongValue] - indexOffset > 5000)
+        {
+            indexOffset = [obj[2] longLongValue];
+            [splitIndexes addObject:@(lastIndex)];
+        }
+        else if ([obj[3] longLongValue] - indexOffset > 5000)
+        {
+            indexOffset = [obj[2] longLongValue];
+            [splitIndexes addObject:@(lastIndex)];
+        }
+        lastIndex = idx;
+        if (lastIndex == tmpArray.count - 1)
+        {
+            [splitIndexes addObject:@(lastIndex)];
+        }
+    }];
+    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < splitIndexes.count - 1; i++)
+    {
+        NSRange range =
+            NSMakeRange([splitIndexes[i] unsignedIntegerValue],
+                        ([splitIndexes[i + 1] unsignedIntegerValue] - [splitIndexes[i] unsignedIntegerValue] + 1));
+        if ([splitIndexes[i] unsignedIntegerValue] > 0)
+        {
+            range = NSMakeRange([splitIndexes[i] unsignedIntegerValue] + 1,
+                                ([splitIndexes[i + 1] unsignedIntegerValue] - [splitIndexes[i] unsignedIntegerValue]));
+        }
+        [resultArray addObject:[[tmpArray copy] subarrayWithRange:range]];
+    }
+    return [NSArray arrayWithArray:resultArray];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,21 +75,6 @@
         [NSColor colorWithRed:58.0 / 255.0 green:61.0 / 255.0 blue:63.0 / 255.0 alpha:1.0].CGColor;
     self.originTextView.textColor = [NSColor colorWithRed:145 / 255.0 green:125 / 255.0 blue:82 / 255.0 alpha:1.0];
     self.translateTextView.textColor = [NSColor colorWithRed:94 / 255.0 green:111 / 255.0 blue:79 / 255.0 alpha:1.0];
-    
-    NSString *TEST_PAR = @"Wot about Fig. 2 and (Fig. 3)? We created a myosinII-responsive FA interactome from proteins in the expected FA list by color-coding proteins according to MDR magnitude (Supplemental Fig. S4 and Table 7, http://dir.nhlbi.nih.gov/papers/lctm/focaladhesion/Home/index.html). The interactome illustrates the full range of MDR values, including proteins exhibiting minor/low confidence changes. This interactome suggests how myosinII activity may collectively modulate FA abundance of groups of proteins mediating distinct pathways.";
-    TEST_PAR = @"The development coincided with a warning issued in London by the Bosnian Foreign Minister, Irfan Ljubijankic, that the region was \"dangerously close to a resumption of all-out war.\" He added, \"At the moment we have a diplomatic vacuum.\"\nIn the latest of a series of inconclusive Western moves to avert a renewed Balkan flareup, the American envoy, Assistant Secretary of State Richard C. Holbrooke, met with President Franjo Tudjman at the Presidential Palace in the hills above Zagreb tonight. But the meeting lasted less than 40 minutes and Mr. Holbrooke refused to answer reporters' questions when he left.";
-
-    
-    NSArray *array = [@"Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that.Returns the specified string either intact, or truncated with the indicator string added if the original string is too long to fit in the desired width.  The indicator string would typically be an ellipsis (...); passing nil will default to that." componentsSeparatedByLength:5000];
-
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSArray *output = [ZMSentenceSplitter markupRawText:obj];
-        for (NSArray *array in output)
-        {
-            NSLog(@"%@--%@: %@", array[2], array[3], [obj substringWithRange:NSMakeRange([array[2] intValue], [array[3] intValue] - [array[2] intValue])]);
-        }
-    }];
-//    [ZMSubtitleTranslator translateSubtitle:[[NSBundle mainBundle] pathForResource:@"Test" ofType:@"vtt"]];
 }
 
 - (void)viewDidAppear { [super viewDidAppear]; }
@@ -84,12 +106,15 @@
             engine = kTranslateEngineGoogle;
             break;
         case 3:
-            engine = kTranslateEngineTencent;
+            engine = kTranslateEngineBing;
             break;
         case 4:
-            engine = kTranslateEngineBaidu;
+            engine = kTranslateEngineTencent;
             break;
         case 5:
+            engine = kTranslateEngineBaidu;
+            break;
+        case 6:
             engine = kTranslateEngineYouDao;
             break;
         default:
@@ -113,11 +138,14 @@
         case kTranslateEngineGoogle:
             transKey = @"G";
             break;
+        case kTranslateEngineBing:
+            transKey = @"B";
+            break;
         case kTranslateEngineTencent:
             transKey = @"T";
             break;
         case kTranslateEngineBaidu:
-            transKey = @"B";
+            transKey = @"BD";
             break;
         case kTranslateEngineYouDao:
             transKey = @"Y";
@@ -135,33 +163,56 @@
         }
     }
     __weak typeof(self) weakSelf = self;
-    [ZMWordTranslator tranlateWord:str
-                            engine:engine
-                        completion:^(BOOL success, NSString *result) {
-                            __strong typeof(self) strongSelf = weakSelf;
-                            if (success)
-                            {
-                                if (dic)
+    if (self.originTextView.string.length > 5000)
+    {
+        [ZMWordTranslator translateLongWord:str
+                                     engine:engine
+                                  segmented:NO
+                                 completion:^(NSString *result) {
+                                     __strong typeof(self) strongSelf = weakSelf;
+                                     if (dic)
+                                     {
+                                         dic[transKey] = result;
+                                     }
+                                     else
+                                     {
+                                         NSMutableDictionary *transDic = [NSMutableDictionary dictionary];
+                                         transDic[transKey] = result;
+                                         strongSelf.cacheTranslate[str] = transDic;
+                                     }
+                                     strongSelf.translateTextView.string = result;
+                                 }];
+    }
+    else
+    {
+        [ZMWordTranslator tranlateWord:str
+                                engine:engine
+                            completion:^(BOOL success, NSString *result) {
+                                __strong typeof(self) strongSelf = weakSelf;
+                                if (success)
                                 {
-                                    dic[transKey] = result;
+                                    if (dic)
+                                    {
+                                        dic[transKey] = result;
+                                    }
+                                    else
+                                    {
+                                        NSMutableDictionary *transDic = [NSMutableDictionary dictionary];
+                                        transDic[transKey] = result;
+                                        strongSelf.cacheTranslate[str] = transDic;
+                                    }
+                                    strongSelf.translateTextView.string = result;
                                 }
                                 else
                                 {
-                                    NSMutableDictionary *transDic = [NSMutableDictionary dictionary];
-                                    transDic[transKey] = result;
-                                    strongSelf.cacheTranslate[str] = transDic;
+                                    [Alert alertWithStyle:kAlertStyleSheet
+                                                   titles:@[ @"确定" ]
+                                                  message:@"发生严重错误，请重试!!!"
+                                              informative:result
+                                               clickBlock:nil];
                                 }
-                                strongSelf.translateTextView.string = result;
-                            }
-                            else
-                            {
-                                [Alert alertWithStyle:kAlertStyleSheet
-                                               titles:@[ @"确定" ]
-                                              message:@"发生严重错误，请重试!!!"
-                                          informative:result
-                                           clickBlock:nil];
-                            }
-                        }];
+                            }];
+    }
 }
 
 - (NSString *)pasteBoardContent

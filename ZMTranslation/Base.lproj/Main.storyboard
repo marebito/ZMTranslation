@@ -765,19 +765,20 @@
                                 </scroller>
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dQY-O7-hjJ">
-                                <rect key="frame" x="175" y="27" width="370" height="24"/>
+                                <rect key="frame" x="120" y="27" width="480" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="366" id="WKh-b3-m0l"/>
+                                    <constraint firstAttribute="width" constant="476" id="WKh-b3-m0l"/>
                                 </constraints>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Pqe-JL-2FT">
                                     <font key="font" metaFont="cellTitle"/>
                                     <segments>
                                         <segment label="欧路词典" width="60"/>
-                                        <segment label="ICBA" width="60" tag="1"/>
+                                        <segment label="爱词霸" width="60" tag="1"/>
                                         <segment label="谷歌翻译" width="60"/>
-                                        <segment label="腾讯翻译" width="60"/>
-                                        <segment label="百度翻译" width="60"/>
-                                        <segment label="有道翻译" width="60"/>
+                                        <segment label="必应翻译" width="60"/>
+                                        <segment label="腾讯翻译" width="59"/>
+                                        <segment label="百度翻译" width="59"/>
+                                        <segment label="有道翻译"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -839,8 +840,8 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uvq-Uw-gYW" secondAttribute="trailing" constant="20" symbolic="YES" id="5mm-N7-oVV"/>
                             <constraint firstItem="Wia-zX-bNc" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="23" id="6lj-mY-leD"/>
                             <constraint firstAttribute="trailing" secondItem="WNN-CA-Mdg" secondAttribute="trailing" constant="316" id="BMd-p4-yFu"/>
+                            <constraint firstItem="dQY-O7-hjJ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="BbA-25-fJW"/>
                             <constraint firstItem="WNN-CA-Mdg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="14" id="Et0-E3-oiN"/>
-                            <constraint firstItem="dQY-O7-hjJ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="KhN-ei-iBU"/>
                             <constraint firstAttribute="trailing" secondItem="Wia-zX-bNc" secondAttribute="trailing" constant="369" id="MoD-DQ-OwE"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TJy-F0-906" secondAttribute="trailing" constant="20" symbolic="YES" id="Mry-VS-kxs"/>
                             <constraint firstItem="eEj-zX-w99" firstAttribute="leading" secondItem="bzx-kV-wxl" secondAttribute="trailing" constant="21" id="Yr1-mB-6Pb"/>

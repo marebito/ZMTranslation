@@ -222,6 +222,10 @@
         else
         {
             begin = [self getStartOfSentRobustly:sent wholeDoc:input lastend:end];
+            if (begin < 0)
+            {
+                NSLog(@"jskldkjf");
+            }
             end = [self getEndOfSentRobustly:sent wholeDoc:input begin:begin];
             if (newPar)
             {
@@ -289,7 +293,16 @@
 + (NSInteger)getStartOfSentRobustly:(NSString *)sent wholeDoc:(NSString *)wholeDoc lastend:(NSInteger)lastend
 {
     NSArray *wordsOfSent = [sent componentsSeparatedByString:@" "];
-    NSInteger begin = [[wholeDoc substringFromIndex:lastend] rangeOfString:wordsOfSent[0]].location;
+    NSString *validStr = wordsOfSent[0];
+    for (int i = 0; i < wordsOfSent.count; i++)
+    {
+        if ([wordsOfSent[i] length] > 0)
+        {
+            validStr = wordsOfSent[i];
+            break;
+        }
+    }
+    NSInteger begin = [[wholeDoc substringFromIndex:lastend] rangeOfString:validStr].location;
     return lastend + begin;
 }
 
@@ -300,8 +313,11 @@
     for (int i = 0; i < wordsOfSent.count; i++)
     {
         NSString *thisTok = [wordsOfSent objectAtIndex:i];
-        NSRange range = [[wholeDoc substringFromIndex:end] rangeOfString:thisTok];
-        end += range.location + range.length;
+        if (thisTok.length > 0)
+        {
+            NSRange range = [[wholeDoc substringFromIndex:end] rangeOfString:thisTok];
+            end += range.location + range.length;
+        }
     }
     return end;
 }

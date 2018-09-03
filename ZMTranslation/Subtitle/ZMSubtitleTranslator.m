@@ -16,7 +16,7 @@
 + (void)translateSubtitle:(NSString *)vttFile
 {
     NSString *vttContent = [[NSString alloc] initWithContentsOfFile:vttFile encoding:NSUTF8StringEncoding error:nil];
-
+    NSString *fileName = [[vttFile lastPathComponent] stringByDeletingPathExtension];
     NSArray *array = [vttContent componentsSeparatedByString:@"\n"];
 
     __block NSMutableString *finalString = [NSMutableString string];
@@ -92,8 +92,9 @@
                                            // TODO: 字幕人工校验
                                            NSString *finalString = [ZMSubtitleTranslator processSubtitles:subtitles];
                                            [ZMFileOperation selectFilePath:^(NSInteger response, NSString *filePath) {
-                                               NSString *vttPath =
-                                                   [filePath stringByAppendingPathComponent:@"test.vtt"];
+                                               NSString *vttPath = [filePath
+                                                   stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.vtt",
+                                                                                                             fileName]];
                                                if ([[NSFileManager defaultManager] fileExistsAtPath:vttPath])
                                                {
                                                    [[NSFileManager defaultManager] removeItemAtPath:vttPath error:nil];

@@ -58,6 +58,13 @@
 #define GOOGLE_TRANSLATE_URL @"https://translate.google.cn/?hl=en"
 
 /****************************************************/
+/*                     必应翻译                       */
+/****************************************************/
+#define BING_TRANSLATE_URL @"https://cn.bing.com/ttranslate?&category=&IG=136E78987717497D896AAD8177BD6D32&IID=translator.5036.2"
+#define BING_TRANSLATE_ORIGIN @"https://cn.bing.com"
+#define BING_TRANSLATE_REFERER @"https://cn.bing.com/translator/"
+
+/****************************************************/
 /*                      腾讯翻译                      */
 /****************************************************/
 #define TENCENT_TRANSLATE_URL @"https://fanyi.qq.com/api/translate"
