@@ -9,6 +9,8 @@
 #import "ZMWordTranslator.h"
 #import "AFNetworking.h"
 #import "HttpUtil.h"
+#import "ZMSentenceSplitter.h"
+#import "ZMTranslateManager.h"
 
 static NSMutableDictionary *retryCache;
 
@@ -81,6 +83,18 @@ static NSMutableDictionary *retryCache;
                 @"kc" : @"2",
                 @"tk" : @"342694.244574",
                 @"q" : word
+            };
+        }
+        break;
+        case kTranslateEngineBing:
+        {
+            url = BING_TRANSLATE_URL;
+            origin = BING_TRANSLATE_ORIGIN;
+            referer = BING_TRANSLATE_REFERER;
+            param = @{
+                @"from" : @"en",
+                @"to" : @"zh-CHS",
+                @"text" : word,
             };
         }
         break;
@@ -182,6 +196,12 @@ static NSMutableDictionary *retryCache;
                            result = [result substringToIndex:result.length - 1];
                        }
                        break;
+                       case kTranslateEngineBing:
+                       {
+                           NSDictionary *jsonDic = __JSONDIC__(responseObject);
+                           result = jsonDic[@"translationResponse"];
+                       }
+                       break;
                        case kTranslateEngineTencent:
                        {
                            result = [ZMWordTranslator parseTranslateResult:responseObject
@@ -233,6 +253,112 @@ static NSMutableDictionary *retryCache;
            }];
 }
 
++ (NSArray *)getLastIndexes:(NSArray *)tmpArray
+{
+    NSMutableArray *splitIndexes = [NSMutableArray arrayWithObject:@(0)];
+    __block NSUInteger lastIndex = 0;
+    __block NSUInteger indexOffset = 0;
+    [tmpArray enumerateObjectsUsingBlock:^(NSArray *obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        if ([obj[2] longLongValue] - indexOffset > 5000)
+        {
+            indexOffset = [obj[2] longLongValue];
+            [splitIndexes addObject:@(lastIndex)];
+        }
+        else if ([obj[3] longLongValue] - indexOffset > 5000)
+        {
+            indexOffset = [obj[2] longLongValue];
+            [splitIndexes addObject:@(lastIndex)];
+        }
+        lastIndex = idx;
+        if (lastIndex == tmpArray.count - 1)
+        {
+            [splitIndexes addObject:@(lastIndex)];
+        }
+    }];
+    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < splitIndexes.count - 1; i++)
+    {
+        NSRange range =
+            NSMakeRange([splitIndexes[i] unsignedIntegerValue],
+                        ([splitIndexes[i + 1] unsignedIntegerValue] - [splitIndexes[i] unsignedIntegerValue] + 1));
+        if ([splitIndexes[i] unsignedIntegerValue] > 0)
+        {
+            range = NSMakeRange([splitIndexes[i] unsignedIntegerValue] + 1,
+                                ([splitIndexes[i + 1] unsignedIntegerValue] - [splitIndexes[i] unsignedIntegerValue]));
+        }
+        [resultArray addObject:[[tmpArray copy] subarrayWithRange:range]];
+    }
+    return [NSArray arrayWithArray:resultArray];
+}
+
++ (void)translateLongWord:(NSString *)word
+                   engine:(kTranslateEngine)engine
+                segmented:(BOOL)segmented
+               completion:(void (^)(NSString *result))completion
+{
+    NSArray *tmpArray = [ZMSentenceSplitter markupRawText:word];
+    NSArray *validArray = [ZMWordTranslator getLastIndexes:tmpArray];
+    __block NSMutableArray *finalStringArray = [[NSMutableArray alloc] init];
+    [validArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        NSMutableString *data = [[NSMutableString alloc] init];
+        for (NSArray *array in obj)
+        {
+            NSString *str =
+                [word substringWithRange:NSMakeRange([array[2] intValue], [array[3] intValue] - [array[2] intValue])];
+            if (segmented)
+            {
+                [finalStringArray addObject:str];
+            }
+            else
+            {
+                [data appendString:str];
+            }
+        }
+        if (!segmented)
+        {
+            [finalStringArray addObject:data];
+        }
+    }];
+
+    __block NSInteger count = finalStringArray.count;
+    __block NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    __block NSString *targetStr = [word copy];
+    [finalStringArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        [[ZMTranslateManager defaultManager]
+            addTask:[ZMTranslateRequest
+                        requestWithText:obj
+                               callback:^(BOOL success, NSString *translateResult) {
+                                   count--;
+                                   if (segmented)
+                                   {
+                                       targetStr = [targetStr stringByReplacingOccurrencesOfString:obj
+                                                                                        withString:translateResult];
+                                   }
+                                   else
+                                   {
+                                       [dic setObject:translateResult forKey:obj];
+                                   }
+                                   if (count == 0)
+                                   {
+                                       if (segmented)
+                                       {
+                                           if (completion) completion(targetStr);
+                                       }
+                                       else
+                                       {
+                                           NSMutableArray *copyArray = [finalStringArray copy];
+                                           NSMutableString *resultStr = [[NSMutableString alloc] init];
+                                           [copyArray enumerateObjectsUsingBlock:^(id _Nonnull tmpObj, NSUInteger idx,
+                                                                                   BOOL *_Nonnull stop) {
+                                               [resultStr appendString:dic[tmpObj]];
+                                           }];
+                                           if (completion) completion([NSString stringWithString:resultStr]);
+                                       }
+                                   }
+                               }]];
+    }];
+}
+
 + (NSString *)parseTranslateResult:(id)responseObject keys:(NSArray *)keys transKey:(NSString *)transKey
 {
     NSDictionary *jsonDic = __JSONDIC__(responseObject);
@@ -253,13 +379,6 @@ static NSMutableDictionary *retryCache;
         }
     }];
     return [NSString stringWithString:string];
-}
-
-+ (NSArray *)splitWord:(NSString *)word
-{
-    // 每5000字截取一段，然后调用接口 . ? !
-    NSArray *array = [word componentsSeparatedByLength:5000];
-    return nil;
 }
 
 @end

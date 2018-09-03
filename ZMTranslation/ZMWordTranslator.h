@@ -14,6 +14,7 @@
  - kTranslateEngineEudic: 欧路词典
  - kTranslateEngineIcba: 爱词霸
  - kTranslateEngineGoogle: 谷歌翻译
+ - kTranslateEngineBing: 必应翻译
  - kTranslateEngineTencent: 腾讯翻译
  - kTranslateEngineBaidu: 百度翻译
  - kTranslateEngineYouDao: 有道翻译
@@ -22,6 +23,7 @@ typedef NS_ENUM(NSUInteger, kTranslateEngine) {
     kTranslateEngineEudic,
     kTranslateEngineIcba,
     kTranslateEngineGoogle,
+    kTranslateEngineBing,
     kTranslateEngineTencent,
     kTranslateEngineBaidu,
     kTranslateEngineYouDao
@@ -32,5 +34,10 @@ typedef NS_ENUM(NSUInteger, kTranslateEngine) {
 + (void)tranlateWord:(NSString *)word
               engine:(kTranslateEngine)engine
           completion:(void (^)(BOOL success, NSString *result))completion;
+
++ (void)translateLongWord:(NSString *)word
+                   engine:(kTranslateEngine)engine
+                segmented:(BOOL)segmented
+               completion:(void (^)(NSString *result))completion;
 
 @end
