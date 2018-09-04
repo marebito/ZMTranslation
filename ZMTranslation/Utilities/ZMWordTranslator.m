@@ -185,6 +185,10 @@ static NSMutableDictionary *retryCache;
                        {
                            NSDictionary *jsonDic = __JSONDIC__(responseObject);
                            result = jsonDic[@"content"][@"out"];
+                           if (!result)
+                           {
+                               result = [jsonDic[@"content"][@"word_mean"] firstObject];
+                           }
                        }
                        break;
                        case kTranslateEngineGoogle:
