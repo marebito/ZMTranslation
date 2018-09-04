@@ -210,10 +210,10 @@
              uploadProgress:nil
            downloadProgress:nil
           completionHandler:^(NSURLResponse *_Nonnull response, id _Nullable responseObject, NSError *_Nullable error) {
+#if REQUEST_LOG
               id responseObjectCopy = [responseObject copy];
               NSURLResponse *responseCopy = [response copy];
               NSString *responseJSON = [[NSString alloc] initWithData:responseObjectCopy encoding:NSUTF8StringEncoding];
-#if REQUEST_LOG
               NSLog(@"\n[响应状态码] : \n%ld\n\n[响应头] : \n%@\n\n[返回数据] : \n%@\n\n[错误] : \n%@\n",
                     (long)((NSHTTPURLResponse *)responseCopy).statusCode,
                     ((NSHTTPURLResponse *)responseCopy).allHeaderFields, responseJSON,

@@ -66,6 +66,7 @@
             }
         }
     }];
+    NSInteger totalCount = count;
     [[ZMTranslateManager defaultManager] setEngine:kTranslateEngineGoogle];
     [subtitles enumerateObjectsUsingBlock:^(ZMSubtitle *subtitle, NSUInteger idx, BOOL *_Nonnull stop) {
         [[ZMTranslateManager defaultManager]
@@ -86,6 +87,7 @@
                                            NSLog(@"发生严重错误!!!");
                                        }
                                        count--;
+                                       NSLog(@"进度-->%f", 1.0 - count*1.0/totalCount);
                                        [subtitle.transText setObject:translateResult forKey:str];
                                        if (count == 0)
                                        {

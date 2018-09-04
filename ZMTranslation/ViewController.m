@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import "ZMWordTranslator.h"
-#import "Alert.h"
+#import "ZMAlert.h"
 #import "ZMSubtitleTranslator.h"
+#import "ZMDragDropView.h"
 
 // E-欧路 I-ICBA G-google B-Bing T-腾讯 BD-百度 Y-有道
 
-@interface ViewController ()
+@interface ViewController ()<ZMDragDropViewDelegate>
 
 @property(nonatomic, strong) NSMutableDictionary *cacheTranslate;
 
@@ -84,13 +85,13 @@
     NSSegmentedControl *segCtl = (NSSegmentedControl *)sender;
     if (self.originTextView.string.length == 0)
     {
-        [Alert alertWithStyle:kAlertStyleSheet
-                       titles:@[ @"确定" ]
-                      message:@"请输入原文!!!"
-                  informative:@"重试!"
-                   clickBlock:^(Alert *alert, NSUInteger index){
+        [ZMAlert alertWithStyle:kAlertStyleSheet
+                         titles:@[ @"确定" ]
+                        message:@"请输入原文!!!"
+                    informative:@"重试!"
+                     clickBlock:^(ZMAlert *alert, NSUInteger index){
 
-                   }];
+                     }];
         return;
     }
     kTranslateEngine engine = kTranslateEngineEudic;
@@ -205,11 +206,11 @@
                                 }
                                 else
                                 {
-                                    [Alert alertWithStyle:kAlertStyleSheet
-                                                   titles:@[ @"确定" ]
-                                                  message:@"发生严重错误，请重试!!!"
-                                              informative:result
-                                               clickBlock:nil];
+                                    [ZMAlert alertWithStyle:kAlertStyleSheet
+                                                     titles:@[ @"确定" ]
+                                                    message:@"发生严重错误，请重试!!!"
+                                                informative:result
+                                                 clickBlock:nil];
                                 }
                             }];
     }
@@ -251,6 +252,21 @@
 
         self.originTextView.string = @"";
         self.translateTextView.string = @"";
+    }
+}
+
+/***
+ 第五步：实现dragdropview的代理函数，如果有数据返回就会触发这个函数
+ ***/
+- (void)dragDropViewFileList:(NSArray *)fileList
+{
+    //如果数组不存在或为空直接返回不做处理（这种方法应该被广泛的使用，在进行数据处理前应该现判断是否为空。）
+    if (!fileList || [fileList count] <= 0) return;
+    //在这里我们将遍历这个数字，输出所有的链接，在后台你将会看到所有接受到的文件地址
+    for (int n = 0; n < [fileList count]; n++)
+    {
+        NSLog(@">>> %@", [fileList objectAtIndex:n]);
+        [ZMSubtitleTranslator translateSubtitle:fileList[0]];
     }
 }
 

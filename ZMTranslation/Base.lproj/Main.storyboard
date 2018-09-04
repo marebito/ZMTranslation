@@ -701,7 +701,7 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Delegate-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
@@ -712,15 +712,15 @@
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wia-zX-bNc">
                                 <rect key="frame" x="23" y="75" width="328" height="371"/>
                                 <clipView key="contentView" id="yOJ-ep-OLM">
-                                    <rect key="frame" x="1" y="1" width="326" height="369"/>
+                                    <rect key="frame" x="1" y="1" width="311" height="369"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="bzx-kV-wxl">
-                                            <rect key="frame" x="0.0" y="0.0" width="326" height="369"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="369"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" red="0.56862745098039214" green="0.49019607843137253" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="326" height="369"/>
+                                            <size key="minSize" width="311" height="369"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
@@ -733,12 +733,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lzB-UN-S9R">
-                                    <rect key="frame" x="311" y="1" width="16" height="369"/>
+                                    <rect key="frame" x="312" y="1" width="15" height="369"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEj-zX-w99">
-                                <rect key="frame" x="371" y="75" width="328" height="371"/>
+                                <rect key="frame" x="356" y="75" width="343" height="371"/>
                                 <clipView key="contentView" id="w4Q-tT-DGA">
                                     <rect key="frame" x="1" y="1" width="326" height="369"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -760,7 +760,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="NjC-dK-X8u">
-                                    <rect key="frame" x="311" y="1" width="16" height="369"/>
+                                    <rect key="frame" x="327" y="1" width="15" height="369"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -833,6 +833,20 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcC-F3-oHs">
+                                <rect key="frame" x="568" y="7" width="64" height="64"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="subtitle" id="bg2-87-WZz"/>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="H4V-lq-VnE" customClass="ZMDragDropView">
+                                <rect key="frame" x="568" y="7" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="OSt-He-51R"/>
+                                    <constraint firstAttribute="height" constant="64" id="Yh1-ig-x5T"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="165-xr-sCl"/>
+                                </connections>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="TJy-F0-906" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="14" id="0Cz-9l-wFW"/>
@@ -841,16 +855,22 @@
                             <constraint firstItem="Wia-zX-bNc" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="23" id="6lj-mY-leD"/>
                             <constraint firstAttribute="trailing" secondItem="WNN-CA-Mdg" secondAttribute="trailing" constant="316" id="BMd-p4-yFu"/>
                             <constraint firstItem="dQY-O7-hjJ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="BbA-25-fJW"/>
+                            <constraint firstItem="FcC-F3-oHs" firstAttribute="width" secondItem="H4V-lq-VnE" secondAttribute="width" id="Ecl-ZB-cUE"/>
                             <constraint firstItem="WNN-CA-Mdg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="14" id="Et0-E3-oiN"/>
                             <constraint firstAttribute="trailing" secondItem="Wia-zX-bNc" secondAttribute="trailing" constant="369" id="MoD-DQ-OwE"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TJy-F0-906" secondAttribute="trailing" constant="20" symbolic="YES" id="Mry-VS-kxs"/>
+                            <constraint firstItem="FcC-F3-oHs" firstAttribute="height" secondItem="H4V-lq-VnE" secondAttribute="height" id="NM4-yW-SIc"/>
+                            <constraint firstItem="H4V-lq-VnE" firstAttribute="top" secondItem="eEj-zX-w99" secondAttribute="bottom" constant="4" id="NqW-UN-KQD"/>
+                            <constraint firstItem="FcC-F3-oHs" firstAttribute="centerY" secondItem="H4V-lq-VnE" secondAttribute="centerY" id="RQu-i4-6f3"/>
                             <constraint firstItem="eEj-zX-w99" firstAttribute="leading" secondItem="bzx-kV-wxl" secondAttribute="trailing" constant="21" id="Yr1-mB-6Pb"/>
                             <constraint firstItem="WNN-CA-Mdg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Yuy-KD-wzl"/>
+                            <constraint firstItem="H4V-lq-VnE" firstAttribute="leading" secondItem="dQY-O7-hjJ" secondAttribute="trailing" constant="-30" id="ZiY-Bv-eej"/>
                             <constraint firstItem="Uvq-Uw-gYW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="23" id="ema-at-8k8"/>
                             <constraint firstItem="Wia-zX-bNc" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="34" id="eof-CY-70U"/>
                             <constraint firstAttribute="trailing" secondItem="uQ6-LD-BxO" secondAttribute="trailing" constant="20" id="hOg-dY-2gf"/>
                             <constraint firstAttribute="bottom" secondItem="Wia-zX-bNc" secondAttribute="bottom" constant="75" id="hmA-mJ-VdK"/>
                             <constraint firstItem="uQ6-LD-BxO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="jXD-Lm-ami"/>
+                            <constraint firstItem="FcC-F3-oHs" firstAttribute="centerX" secondItem="H4V-lq-VnE" secondAttribute="centerX" id="lrf-i6-ti0"/>
                             <constraint firstItem="uQ6-LD-BxO" firstAttribute="centerY" secondItem="dQY-O7-hjJ" secondAttribute="centerY" id="mdb-QM-4a1"/>
                             <constraint firstItem="eEj-zX-w99" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="34" id="n3F-TI-Ooa"/>
                             <constraint firstAttribute="bottom" secondItem="eEj-zX-w99" secondAttribute="bottom" constant="75" id="nbI-Sw-vJk"/>
@@ -875,4 +895,7 @@
             <point key="canvasLocation" x="74" y="940"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="subtitle" width="249" height="250"/>
+    </resources>
 </document>

@@ -16,13 +16,15 @@
 		54242A352133C7E800457D7E /* ZMWordTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A342133C7E800457D7E /* ZMWordTranslator.m */; };
 		54242A3C2133D64100457D7E /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3B2133D64100457D7E /* HttpUtil.m */; };
 		54242A3F2133D6EB00457D7E /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 54242A3E2133D6EA00457D7E /* StringUtil.m */; };
-		543F78472134F5E30028EFC6 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F78462134F5E30028EFC6 /* Alert.m */; };
+		543F78472134F5E30028EFC6 /* ZMAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F78462134F5E30028EFC6 /* ZMAlert.m */; };
 		543F784C213517540028EFC6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 543F784B213517540028EFC6 /* icon.png */; };
 		544787902137E9E8005A7B9C /* Test.vtt in Resources */ = {isa = PBXBuildFile; fileRef = 5447878D2137E9E8005A7B9C /* Test.vtt */; };
 		544787912137E9E8005A7B9C /* ZMSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447878E2137E9E8005A7B9C /* ZMSubtitle.m */; };
 		544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */; };
 		5447879E2137EB35005A7B9C /* ZMTranslateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5447879D2137EB35005A7B9C /* ZMTranslateManager.m */; };
 		5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */; };
+		548D17C8213DF5FA00C7A471 /* ZMDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 548D17C7213DF5FA00C7A471 /* ZMDragDropView.m */; };
+		548D17CC213DF95B00C7A471 /* subtitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D17CB213DF95B00C7A471 /* subtitle.png */; };
 		54A4A9642139137D00EE944E /* ZMSentenceSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */; };
 		54AE9458213D356E006AA781 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AE9457213D356E006AA781 /* AVFoundation.framework */; };
 		54AE945A213D35C4006AA781 /* libz.1.2.11.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AE9459213D35C4006AA781 /* libz.1.2.11.tbd */; };
@@ -76,8 +78,8 @@
 		54242A3B2133D64100457D7E /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtil.m; sourceTree = "<group>"; };
 		54242A3D2133D6EA00457D7E /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
 		54242A3E2133D6EA00457D7E /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
-		543F78452134F5E30028EFC6 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
-		543F78462134F5E30028EFC6 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		543F78452134F5E30028EFC6 /* ZMAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMAlert.h; sourceTree = "<group>"; };
+		543F78462134F5E30028EFC6 /* ZMAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMAlert.m; sourceTree = "<group>"; };
 		543F784B213517540028EFC6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		5447878D2137E9E8005A7B9C /* Test.vtt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test.vtt; sourceTree = "<group>"; };
 		5447878E2137E9E8005A7B9C /* ZMSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSubtitle.m; sourceTree = "<group>"; };
@@ -88,6 +90,9 @@
 		5447879D2137EB35005A7B9C /* ZMTranslateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMTranslateManager.m; sourceTree = "<group>"; };
 		5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMFileOperation.h; sourceTree = "<group>"; };
 		5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMFileOperation.m; sourceTree = "<group>"; };
+		548D17C6213DF5FA00C7A471 /* ZMDragDropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMDragDropView.h; sourceTree = "<group>"; };
+		548D17C7213DF5FA00C7A471 /* ZMDragDropView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMDragDropView.m; sourceTree = "<group>"; };
+		548D17CB213DF95B00C7A471 /* subtitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subtitle.png; sourceTree = "<group>"; };
 		54A4A9622139137D00EE944E /* ZMSentenceSplitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMSentenceSplitter.h; sourceTree = "<group>"; };
 		54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMSentenceSplitter.m; sourceTree = "<group>"; };
 		54AE9457213D356E006AA781 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -339,29 +344,18 @@
 		54242A1E2133C7D200457D7E /* ZMTranslation */ = {
 			isa = PBXGroup;
 			children = (
+				548D17CA213DF61E00C7A471 /* CustomView */,
+				548D17C9213DF60600C7A471 /* Utilities */,
 				54C67505213D476F002AF873 /* FFmpeg */,
 				544787952137EA73005A7B9C /* Subtitle */,
-				543F78452134F5E30028EFC6 /* Alert.h */,
-				543F78462134F5E30028EFC6 /* Alert.m */,
-				54242A3D2133D6EA00457D7E /* StringUtil.h */,
-				54242A3E2133D6EA00457D7E /* StringUtil.m */,
-				5447879C2137EB35005A7B9C /* ZMTranslateManager.h */,
-				5447879D2137EB35005A7B9C /* ZMTranslateManager.m */,
-				54242A3A2133D64100457D7E /* HttpUtil.h */,
-				54242A3B2133D64100457D7E /* HttpUtil.m */,
 				54242A1F2133C7D300457D7E /* AppDelegate.h */,
 				54242A202133C7D300457D7E /* AppDelegate.m */,
 				54242A222133C7D300457D7E /* ViewController.h */,
 				54242A232133C7D300457D7E /* ViewController.m */,
-				54242A332133C7E800457D7E /* ZMWordTranslator.h */,
-				54242A342133C7E800457D7E /* ZMWordTranslator.m */,
-				5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */,
-				5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */,
-				54A4A9622139137D00EE944E /* ZMSentenceSplitter.h */,
-				54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */,
 				54242A392133CEAA00457D7E /* PrefixHeader.pch */,
 				54242A252133C7D300457D7E /* Assets.xcassets */,
 				543F784B213517540028EFC6 /* icon.png */,
+				548D17CB213DF95B00C7A471 /* subtitle.png */,
 				54242A272133C7D300457D7E /* Main.storyboard */,
 				54242A2A2133C7D300457D7E /* Info.plist */,
 				54242A2B2133C7D300457D7E /* main.m */,
@@ -380,6 +374,36 @@
 				544787932137EA6D005A7B9C /* ZMSubtitleTranslator.m */,
 			);
 			path = Subtitle;
+			sourceTree = "<group>";
+		};
+		548D17C9213DF60600C7A471 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				54242A3D2133D6EA00457D7E /* StringUtil.h */,
+				54242A3E2133D6EA00457D7E /* StringUtil.m */,
+				54242A3A2133D64100457D7E /* HttpUtil.h */,
+				54242A3B2133D64100457D7E /* HttpUtil.m */,
+				5447879C2137EB35005A7B9C /* ZMTranslateManager.h */,
+				5447879D2137EB35005A7B9C /* ZMTranslateManager.m */,
+				54242A332133C7E800457D7E /* ZMWordTranslator.h */,
+				54242A342133C7E800457D7E /* ZMWordTranslator.m */,
+				5472D0D4213800F1003BF7B8 /* ZMFileOperation.h */,
+				5472D0D5213800F1003BF7B8 /* ZMFileOperation.m */,
+				54A4A9622139137D00EE944E /* ZMSentenceSplitter.h */,
+				54A4A9632139137D00EE944E /* ZMSentenceSplitter.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		548D17CA213DF61E00C7A471 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				543F78452134F5E30028EFC6 /* ZMAlert.h */,
+				543F78462134F5E30028EFC6 /* ZMAlert.m */,
+				548D17C6213DF5FA00C7A471 /* ZMDragDropView.h */,
+				548D17C7213DF5FA00C7A471 /* ZMDragDropView.m */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		54C67505213D476F002AF873 /* FFmpeg */ = {
@@ -704,6 +728,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548D17CC213DF95B00C7A471 /* subtitle.png in Resources */,
 				544787902137E9E8005A7B9C /* Test.vtt in Resources */,
 				54242A262133C7D300457D7E /* Assets.xcassets in Resources */,
 				54242A292133C7D300457D7E /* Main.storyboard in Resources */,
@@ -744,10 +769,11 @@
 				54242A242133C7D300457D7E /* ViewController.m in Sources */,
 				5472D0D6213800F1003BF7B8 /* ZMFileOperation.m in Sources */,
 				54242A3C2133D64100457D7E /* HttpUtil.m in Sources */,
+				548D17C8213DF5FA00C7A471 /* ZMDragDropView.m in Sources */,
 				54242A352133C7E800457D7E /* ZMWordTranslator.m in Sources */,
 				54A4A9642139137D00EE944E /* ZMSentenceSplitter.m in Sources */,
 				544787942137EA6D005A7B9C /* ZMSubtitleTranslator.m in Sources */,
-				543F78472134F5E30028EFC6 /* Alert.m in Sources */,
+				543F78472134F5E30028EFC6 /* ZMAlert.m in Sources */,
 				54242A2C2133C7D300457D7E /* main.m in Sources */,
 				54242A212133C7D300457D7E /* AppDelegate.m in Sources */,
 				5447879E2137EB35005A7B9C /* ZMTranslateManager.m in Sources */,

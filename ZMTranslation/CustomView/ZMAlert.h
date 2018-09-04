@@ -1,8 +1,8 @@
 //
-//  AlertView.h
-//  BaiduDownloader
+//  ZMAlert.h
+//  ZMTranslation
 //
-//  Created by zll on 2018/4/24.
+//  Created by Yuri Boyka on 2018/4/24.
 //  Copyright © 2018年 Godlike Studio. All rights reserved.
 //
 
@@ -16,12 +16,12 @@
  */
 typedef NS_ENUM(NSUInteger, kAlertStyle) { kAlertStyleDefault, kAlertStyleSheet };
 
-@interface Alert : NSAlert
+@interface ZMAlert : NSAlert
 
-+ (Alert *)alertWithStyle:(kAlertStyle)style
++ (ZMAlert *)alertWithStyle:(kAlertStyle)style
                    titles:(NSArray *)titles
                   message:(NSString *)message
               informative:(NSString *)informative
-               clickBlock:(void (^)(Alert *alert, NSUInteger index))block;
+               clickBlock:(void (^)(ZMAlert *alert, NSUInteger index))block;
 
 @end
